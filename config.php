@@ -14,7 +14,9 @@ if (!is_file($releaseTypeFN = (__DIR__ . '/config/' . RELEASE_TYPE . '.inc.php')
 require $releaseTypeFN;
 unset($releaseTypeFN);
 
-define('WORKLOGS_PATH', dirname(__DIR__, 2) . '/php-worklogs');
+if (!defined('WORKLOGS_PATH')) {
+    define('WORKLOGS_PATH', dirname(__DIR__, 2) . '/php-worklogs');
+}
 
 // Internal Exceptions error codes
 const INT_EXC_API_ERROR = -97;

@@ -41,3 +41,5 @@ const INCOME_WALLET_VK = '{:wallet_view_key:}';
 const NOTIFY_TYPE = '{:notify_type:}';
 const NOTIFY_TG_BOT_KEY = '{:notify_tg_bot_key:}';
 const NOTIFY_TG_USER_ID = '{:notify_tg_user_id:}';
+
+const WORKLOGS_PATH = '{:logs_path:}'
