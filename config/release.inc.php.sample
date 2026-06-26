@@ -1,0 +1,43 @@
+<?php declare(strict_types=1);
+
+const DB_CONFIG = [
+    'host' => '127.0.0.1:3306',
+    'user' => '{:db_user:}',
+    'pass' => '{:db_password:}',
+    'db_name' => '{:db_name:}',
+];
+
+const RPC_CONFIG = [
+    'scheme' => 'http',
+    'host' => '{:rpc_host:}',
+    'port' => '{:rpc_port:}',
+    'user' => '{:rpc_user:}',
+    'pass' => '{:rpc_pass:}'
+];
+
+// add record(s) to db table rpc_list: chain_id=>rpc_url
+const EVM_NETWORK = [
+    'chain_id' => {:chain_id:},
+    'contract_address' => '{:contract_address:}',
+    'abi' => __DIR__ . '/../resources/arbitrum.abi',
+];
+
+const INDEXER_ROCKSDB_PROXY_SOCKET_PATH = 'unix:///opt/rr-proxy/indexer.sock';
+
+// Main on-chain init data
+const SMT_GENESIS_ROOT = '{:smt_genesis_root:}';
+// let it be the contract creation block ;)
+const EVM_GENESIS_BLOCK = {:evm_genesis_block:};
+const EVM_GENESIS_TX_HASH = '{:evm_genesis_tx_hash:}';
+
+const EVM_SYNC_BLOCK_STEP = 100000;
+// payment processing wallet's birthday
+const PIVX_GENESIS_BLOCK = {:pivx_genesis_block:};
+
+const INCOME_WALLET = '{:wallet_address:}';
+const INCOME_WALLET_VK = '{:wallet_view_key:}';
+
+// notification settings
+const NOTIFY_TYPE = '{:notify_type:}';
+const NOTIFY_TG_BOT_KEY = '{:notify_tg_bot_key:}';
+const NOTIFY_TG_USER_ID = '{:notify_tg_user_id:}';
