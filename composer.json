@@ -1,7 +1,8 @@
 {
     "autoload": {
         "psr-4": {
-            "Indexer\\": "./include"
+            "Indexer\\": "./include",
+            "Application\\": "./registrar/include"
         }
     },
     "require": {
