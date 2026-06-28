@@ -43,6 +43,7 @@ if ($qr->num_rows !== 0) {
     $out['domains_count'] = $qr->fetch_assoc()['count'];
 }
 
+$out['registrar_address'] = INCOME_WALLET;
 $out['registrar_viewing_key'] = INCOME_WALLET_VK;
 
 apiAnswer('response', $out);
