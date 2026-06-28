@@ -30,6 +30,18 @@ Detailed installation guides, architecture overview, and API references are avai
 
 ---
 
+## ⚙️ Periodic Execution (`resources/contrib/`)
+
+The [`resources/contrib/`](resources/contrib/) directory provides production-ready templates for scheduled synchronization:
+
+* **Systemd Units** (Recommended):
+  * [`resources/contrib/pivx-name-indexer.service`](resources/contrib/pivx-name-indexer.service): Systemd service unit defining the indexer execution.
+  * [`resources/contrib/pivx-name-indexer.timer`](resources/contrib/pivx-name-indexer.timer): Systemd timer unit configured to start 1 minute after system boot (allowing MySQL, RPC, and `rr-proxy` services to initialize) and repeat every 30 seconds.
+* **Cron Example**:
+  * [`resources/contrib/crontab`](resources/contrib/crontab): Example crontab rules configured for 30-second interval execution.
+
+---
+
 ## 📄 License
 
 This project is licensed under the terms of the **GNU Affero General Public License v3.0 (AGPL-3.0)**. 

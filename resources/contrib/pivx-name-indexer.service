@@ -1,0 +1,15 @@
+# Adjust paths and user permissions according to your deployment.
+
+[Unit]
+Description=PIVX Name Indexer Sync Service
+After=network.target mariadb.service mysql.service rr-proxy-indexer.service
+
+[Service]
+Type=oneshot
+User=www-data
+Group=www-data
+WorkingDirectory=/var/www/pivx-name-indexer
+ExecStart=/usr/bin/php /var/www/pivx-name-indexer/indexer.php sync
+
+[Install]
+WantedBy=multi-user.target
