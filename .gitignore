@@ -1,5 +1,6 @@
 /.idea/
 /vendor/
+/registrar/
 /config/*.php
 composer.lock
 release_type

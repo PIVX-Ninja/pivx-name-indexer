@@ -1,5 +1,6 @@
 <?php declare(strict_types=1);
 
+// Do not forget to GRANT XA_RECOVER_ADMIN ON *.* TO '{:db_user:}'@'{:db_host:}';
 const DB_CONFIG = [
     'host' => '127.0.0.1:3306',
     'user' => '{:db_user:}',
