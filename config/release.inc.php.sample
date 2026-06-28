@@ -15,31 +15,32 @@ const RPC_CONFIG = [
     'pass' => '{:rpc_pass:}'
 ];
 
-// add record(s) to db table rpc_list: chain_id=>rpc_url
+// Do not forget to add proper RPC URL(s) to db table rpc_list: chain_id=>rpc_url
 const EVM_NETWORK = [
-    'chain_id' => {:chain_id:},
-    'contract_address' => '{:contract_address:}',
+    'chain_id' => 421614,
+    'contract_address' => '0x44424f6ae147b6fc884b30c6549cd0f951aa423f',
     'abi' => __DIR__ . '/../resources/arbitrum.abi',
 ];
 
 const INDEXER_ROCKSDB_PROXY_SOCKET_PATH = 'unix:///opt/rr-proxy/indexer.sock';
 
 // Main on-chain init data
-const SMT_GENESIS_ROOT = '{:smt_genesis_root:}';
+const SMT_GENESIS_ROOT = 'b4c9dacf8e194e353dce7638d76f282fe40399f7b0ad74a2229a6d4f5be774de';
+// payment processing wallet's start block
+const PIVX_GENESIS_BLOCK = 25470;
+
 // let it be the contract creation block ;)
-const EVM_GENESIS_BLOCK = {:evm_genesis_block:};
-const EVM_GENESIS_TX_HASH = '{:evm_genesis_tx_hash:}';
+const EVM_GENESIS_BLOCK = 281895770;
+const EVM_GENESIS_TX_HASH = '0xc0db5015a09e49ebd18fd20d3d7c5ca6f7f6d3207d05a9a848ab2fa2b9a24634';
 
 const EVM_SYNC_BLOCK_STEP = 100000;
-// payment processing wallet's birthday
-const PIVX_GENESIS_BLOCK = {:pivx_genesis_block:};
 
-const INCOME_WALLET = '{:wallet_address:}';
-const INCOME_WALLET_VK = '{:wallet_view_key:}';
+const INCOME_WALLET = 'pts1xnwg2pdn7q82e9uqchyzazut5j7mcef20mg7jkpyk00zry9ep470d3qre69rvwwgcxljyf84agw';
+const INCOME_WALLET_VK = 'ptxviews1qw2n93vhqqqqpqq3ckkys47598pfsltzy7wvny8cqkg892zpm9503exypaaapa9953m973a96pa9tkq29pqfflf7yx5xl7ylelundfvrtgrlrcd0xvlrj6syymlr4xgdsex269vm7rgu0matd3cdk556ywjztdnewq4q2qjt0c8pmgws8ser6x4zzw6zgxyhz2gznugfjrj0vjvznr4s3vmjyx6yq00l6els5pp5w8trvzfxkp6htxmdwa02apm57zh9yhs02w36euglf3564';
 
 // notification settings
 const NOTIFY_TYPE = '{:notify_type:}';
 const NOTIFY_TG_BOT_KEY = '{:notify_tg_bot_key:}';
 const NOTIFY_TG_USER_ID = '{:notify_tg_user_id:}';
 
-const WORKLOGS_PATH = '{:logs_path:}'
+const WORKLOGS_PATH = '{:logs_path:}';
