@@ -259,8 +259,18 @@ class Protocol
      */
     public static function isAddressValid(string $address): bool
     {
+        // Enforce lowercase canonical formatting
+        if ($address === '' || strtolower($address) !== $address) {
+            return false;
+        }
+
+        // Validate Bech32 addresses (Sapling / Unified)
         try {
-            BitWasp\Bech32\decode($address);
+            [$hrp] = BitWasp\Bech32\decode($address);
+            // Verify PIVX network Human Readable Parts (HRP)
+            if ($hrp !== 'pts' || strlen($address) !== 79) {
+                return false;
+            }
         } catch (BitWasp\Bech32\Exception\Bech32Exception) {
             return false;
         }
