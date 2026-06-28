@@ -74,7 +74,7 @@ DROP TABLE IF EXISTS `rpc_list`;
 CREATE TABLE `rpc_list` (
   `chain_id` mediumint unsigned NOT NULL,
   `rpc_url` varchar(128) CHARACTER SET ascii COLLATE ascii_bin NOT NULL,
-  `issue_ts` int unsigned NOT NULL,
+  `issue_ts` int unsigned NOT NULL DEFAULT '0',
   PRIMARY KEY (`chain_id`,`rpc_url`),
   KEY `idx_chain_issue` (`chain_id`,`issue_ts`)
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_0900_ai_ci;
