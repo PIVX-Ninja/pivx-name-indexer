@@ -2,10 +2,7 @@ version: '3.8'
 
 services:
   indexer:
-    image: pivx-name-indexer:latest
-    build:
-      context: ../..
-      dockerfile: resources/docker/Dockerfile
+    image: ghcr.io/pivx-ninja/pivx-name-indexer:latest
     container_name: pivx-name-indexer
     restart: unless-stopped
     ports:

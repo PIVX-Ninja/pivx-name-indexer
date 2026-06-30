@@ -67,22 +67,27 @@ To run the indexer using the official pre-built image from GitHub Packages witho
 
 To build the Docker image yourself from the source code:
 
-1. Clone this repository and navigate to the `resources/docker` directory:
+1. Clone this repository and navigate to the root directory:
    ```bash
    git clone https://github.com/PIVX-Ninja/pivx-name-indexer.git
-   cd pivx-name-indexer/resources/docker
+   cd pivx-name-indexer
    ```
-2. Copy `env.sample` to `.env`:
+2. Build the Docker image locally:
+   ```bash
+   docker build -t ghcr.io/pivx-ninja/pivx-name-indexer:latest -f resources/docker/Dockerfile .
+   ```
+3. Navigate to the `resources/docker` directory:
+   ```bash
+   cd resources/docker
+   ```
+4. Copy `env.sample` to `.env` and configure your settings:
    ```bash
    cp env.sample .env
-   ```
-3. Open `.env` and fill in your PIVX wallet RPC and EVM RPC settings:
-   ```bash
    nano .env
    ```
-4. Build and start the container:
+5. Start the container:
    ```bash
-   docker compose up --build -d
+   docker compose up -d
    ```
 
 ---
