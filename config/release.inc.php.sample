@@ -19,7 +19,7 @@ const RPC_CONFIG = [
 // Do not forget to add proper RPC URL(s) to db table rpc_list: chain_id=>rpc_url
 const EVM_NETWORK = [
     'chain_id' => 421614,
-    'contract_address' => '0x44424f6ae147b6fc884b30c6549cd0f951aa423f',
+    'contract_address' => '0x237534d7e4c7fa21651befd770d76525c78194c3',
     'abi' => __DIR__ . '/../resources/arbitrum.abi',
 ];
 
@@ -28,11 +28,11 @@ const INDEXER_ROCKSDB_PROXY_SOCKET_PATH = 'unix:///opt/rr-proxy/indexer.sock';
 // Main on-chain init data
 const SMT_GENESIS_ROOT = 'b4c9dacf8e194e353dce7638d76f282fe40399f7b0ad74a2229a6d4f5be774de';
 // payment processing wallet's start block
-const PIVX_GENESIS_BLOCK = 25470;
+const PIVX_GENESIS_BLOCK = 26970;
 
 // let it be the contract creation block ;)
-const EVM_GENESIS_BLOCK = 281895770;
-const EVM_GENESIS_TX_HASH = '0xc0db5015a09e49ebd18fd20d3d7c5ca6f7f6d3207d05a9a848ab2fa2b9a24634';
+const EVM_GENESIS_BLOCK = 282263876;
+const EVM_GENESIS_TX_HASH = '0x8da1a4ed8e4b521f7cc1353ffeefbc4c95100ca7bbc00cf9c04fb65068bb865e';
 
 const EVM_SYNC_BLOCK_STEP = 100000;
 

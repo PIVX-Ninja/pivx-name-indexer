@@ -1,0 +1,3 @@
+* * * * * root /usr/local/bin/indexer sync >> /var/log/indexer/sync-cron.log 2>&1
+59 23 * * * root /usr/sbin/logrotate /etc/logrotate.conf >> /var/log/indexer/logrotate-cron.log 2>&1
+

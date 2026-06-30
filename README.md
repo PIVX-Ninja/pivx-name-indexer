@@ -30,6 +30,107 @@ Detailed installation guides, architecture overview, and API references are avai
 
 ---
 
+## 🐳 Docker Deployment
+
+The indexer can be deployed easily as a Docker container. There are two ways to spin up the container: **from the GitHub Container Registry (GHCR) image** (recommended for production) or **built from local source files**.
+
+### Prerequisites
+Make sure you have [Docker](https://docs.docker.com/get-docker/) and [Docker Compose](https://docs.docker.com/compose/install/) installed on your server.
+
+---
+
+### Method A: Spin up from GitHub Docker Image (Recommended)
+
+To run the indexer using the official pre-built image from GitHub Packages without cloning the full repository:
+
+1. Download the `docker-compose.yml` and `env.sample` files from the repository's `resources/docker/` directory:
+   ```bash
+   curl -L -o docker-compose.yml https://raw.githubusercontent.com/PIVX-Ninja/pivx-name-indexer/master/resources/docker/docker-compose.yml
+   curl -L -o env.sample https://raw.githubusercontent.com/PIVX-Ninja/pivx-name-indexer/master/resources/docker/env.sample
+   ```
+2. Copy `env.sample` to `.env`:
+   ```bash
+   cp env.sample .env
+   ```
+3. Open `.env` and fill in your PIVX wallet RPC and EVM RPC settings:
+   ```bash
+   nano .env
+   ```
+4. Start the container in detached mode:
+   ```bash
+   docker compose up -d
+   ```
+
+---
+
+### Method B: Spin up from Local Docker Files
+
+To build the Docker image yourself from the source code:
+
+1. Clone this repository and navigate to the `resources/docker` directory:
+   ```bash
+   git clone https://github.com/PIVX-Ninja/pivx-name-indexer.git
+   cd pivx-name-indexer/resources/docker
+   ```
+2. Copy `env.sample` to `.env`:
+   ```bash
+   cp env.sample .env
+   ```
+3. Open `.env` and fill in your PIVX wallet RPC and EVM RPC settings:
+   ```bash
+   nano .env
+   ```
+4. Build and start the container:
+   ```bash
+   docker compose up --build -d
+   ```
+
+---
+
+### 🕹️ Start, Stop, and Management Commands
+
+Use these standard commands from the directory containing your `docker-compose.yml` file:
+
+* **Stop the container**:
+  ```bash
+  docker compose stop
+  ```
+* **Start the stopped container**:
+  ```bash
+  docker compose start
+  ```
+* **Stop and remove container + network resources**:
+  ```bash
+  docker compose down
+  ```
+* **Stop and remove container, network, and ALL persistent volumes (destructive)**:
+  ```bash
+  docker compose down -v
+  ```
+* **View container logs**:
+  ```bash
+  docker compose logs -f
+  ```
+* **Query indexer status / verify API (from the host machine)**:
+  ```bash
+  curl -i http://localhost:8080/v1.0/info
+  ```
+
+---
+
+### 🔄 Server Autostart / Restart Policy
+
+The container is configured with the `restart: unless-stopped` policy inside `docker-compose.yml`.
+
+This ensures that:
+- The container starts automatically when the host system boots (assuming the Docker daemon starts).
+- The container restarts automatically if it crashes or if the Docker daemon restarts.
+- If you manually stop the container (using `docker compose stop`), it will not start automatically on boot until you manually start it again.
+
+No additional systemd service configuration is required on the host system, as Docker handles the lifecycle management natively.
+
+---
+
 ## ⚙️ Periodic Execution (`resources/contrib/`)
 
 The [`resources/contrib/`](resources/contrib/) directory provides production-ready templates for scheduled synchronization:

@@ -1,6 +1,8 @@
 <?php declare(strict_types=1);
 
 use Indexer\Database;
+use Indexer\RustRocksDBProxy;
+use Indexer\SparseMerkleTree;
 
 /**
  * @var array $uri
@@ -31,6 +33,12 @@ if ($qr === false) {
 if ($qr->num_rows !== 0) {
     $out['last_checkpoint'] = $qr->fetch_assoc();
 }
+
+// get latest indexer SMT Root
+$rocksDb = new RustRocksDBProxy(INDEXER_ROCKSDB_PROXY_SOCKET_PATH);
+$smt = new SparseMerkleTree($rocksDb);
+$out['indexer_smt_root'] = bin2hex(pack('C*', ...$smt->getRoot()));
+$out['indexer_synced'] = $out['indexer_smt_root'] === $out['last_checkpoint']['smt_root'];
 
 $qr = $db->doSelect(
     'domains',
