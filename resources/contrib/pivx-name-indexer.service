@@ -9,7 +9,7 @@ Type=oneshot
 User=www-data
 Group=www-data
 WorkingDirectory=/var/www/pivx-name-indexer
-ExecStart=/usr/bin/php /var/www/pivx-name-indexer/indexer.php sync
+ExecStart=/usr/bin/php indexer.php sync
 
 [Install]
 WantedBy=multi-user.target
