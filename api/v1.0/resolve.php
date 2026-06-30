@@ -49,7 +49,7 @@ $where = match ($lookupType) {
 $map = ['{:target:}' => $domainName];
 
 $qr = $db->doPlainQuery(
-    'SELECT `domains`.`domain_name`, `domains_history`.`target_address`, `domains_history`.`owner_pubkey`' . $qAdd .
+    'SELECT `domains`.`domain_name`, `domains_history`.`target_address`, `domains_history`.`owner_pubkey`, `domains_history`.`price`, `domains_history`.`nonce`' . $qAdd .
     ' FROM `domains`
     LEFT JOIN `domains_history` ON `domains_history`.`domain_name` = `domains`.`domain_name`
                                 AND `domains_history`.`domain_block_id` = `domains`.`updated_block_id`
