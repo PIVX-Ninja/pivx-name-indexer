@@ -36,7 +36,7 @@ CREATE TABLE `domains_history` (
   `owner_pubkey` char(64) CHARACTER SET ascii COLLATE ascii_bin NOT NULL,
   `domain_tx` char(64) CHARACTER SET ascii COLLATE ascii_bin NOT NULL,
   `op` char(3) CHARACTER SET ascii COLLATE ascii_bin NOT NULL,
-  `nonce` bigint unsigned NOT NULL,
+  `nonce` int unsigned NOT NULL,
   `price` int unsigned NOT NULL,
   PRIMARY KEY (`domain_name`,`domain_block_id`) USING BTREE,
   KEY `target_address` (`target_address`) USING BTREE,
