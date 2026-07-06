@@ -13,6 +13,14 @@ if (isset($uri[2])) {
     throw new RuntimeException(API_ERROR_WRONG_API_METHOD, INT_EXC_API_ERROR);
 }
 
+$extended = false;
+if ($_SERVER['REQUEST_METHOD'] === 'POST') {
+    if (($raw = file_get_contents('php://input')) !== '') {
+        $input = json_decode($raw, true, 4, JSON_THROW_ON_ERROR);
+    }
+    $extended = $input['extended'] ?? false;
+}
+
 $out = getParams(
     [
         PARAM_LAST_PROCESSED_EVM_BLOCK,
@@ -51,7 +59,9 @@ if ($qr->num_rows !== 0) {
     $out['domains_count'] = $qr->fetch_assoc()['count'];
 }
 
-$out['registrar_address'] = INCOME_WALLET;
-$out['registrar_viewing_key'] = INCOME_WALLET_VK;
+if ($extended) {
+    $out['registrar_address'] = INCOME_WALLET;
+    $out['registrar_viewing_key'] = INCOME_WALLET_VK;
+}
 
 apiAnswer('response', $out);
