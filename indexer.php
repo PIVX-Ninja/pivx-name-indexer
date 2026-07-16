@@ -284,6 +284,9 @@ try {
                             continue;
                         }
 
+                        // Temporary protocol update for testnet addr change. TODO remove in prod
+                        Protocol::$block = $block;
+
                         foreach ($saplingTxInfo['outputs'] as $oneTxOutput) {
                             if ($oneTxOutput['address'] === INCOME_WALLET && isset($oneTxOutput['memoStr']) &&
                                 ($txValue = (string)$oneTxOutput['value']) &&
