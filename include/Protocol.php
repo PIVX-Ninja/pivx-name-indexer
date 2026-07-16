@@ -268,7 +268,7 @@ class Protocol
         try {
             [$hrp] = BitWasp\Bech32\decode($address);
             // Verify PIVX network Human Readable Parts (HRP)
-            if ($hrp !== 'pts' || strlen($address) !== 79) {
+            if ($hrp !== 'ptestsapling' || strlen($address) !== 88) {
                 return false;
             }
         } catch (BitWasp\Bech32\Exception\Bech32Exception) {
